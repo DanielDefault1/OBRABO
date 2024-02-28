@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+{% block main %}
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Transaction History</h2>
+
+<table>
+  <tr>
+    <th>Symbol</th>
+    <th>Stock Quantity</th>
+    <th>Total Price</th>
+    <th>Transaction Type</th>
+    <th>Transaction Datetime</th>
+  </tr>
+  {% for transaction in transactions %}
+  <tr>
+    <td>{{ transaction['symbol'] }}</td>
+    <td>{{ transaction['stock_quantity'] }}</td>
+    <td>${{ transaction['total_price'] }}</td>
+    <td>{{ transaction['transaction_type'] }}</td>
+    <td>{{ transaction['transaction_datetime'] }}</td>
+  </tr>
+  {% endfor %}
+</table>
+
+</body>
+{% endblock %}

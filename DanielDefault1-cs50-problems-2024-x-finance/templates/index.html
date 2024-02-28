@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+
+{% block main %}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+        background-color: #f9f9f9;
+    }
+    h2 {
+        margin-bottom: 20px;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+        background-color: #fff;
+        border: 1px solid #ddd;
+    }
+    th, td {
+        padding: 12px;
+        text-align: left;
+        vertical-align: middle;
+        border-bottom: 1px solid #ddd;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+</style>
+</head>
+<body>
+
+<h2>Portfolio</h2>
+
+<table>
+<tr>
+<th>Symbol</th>
+<th>Shares</th>
+<th>Current Price</th>
+<th>Total Price</th>
+</tr>
+{% for data in portfolio_data %}
+<tr>
+<td>{{ data['symbol'] }}</td>
+<td>{{ data['quantity'] }}</td>
+<td>${{ data['current_price'] }}</td>
+<td>${{ data['total_price'] }}</td>
+</tr>
+{% endfor %}
+</table>
+
+<tr>
+<table>
+        <td style="text-align: center;"><strong>Cash: </strong>${{ total_cash }}</td>
+    </tr>
+</table>
+
+<tr>
+<table>
+<td style="text-align: center;"><strong>Total portfolio: </strong>${{ total_portfolio }}</td>
+</tr>
+</table>
+</body>
+
+{% endblock %}
